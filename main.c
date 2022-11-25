@@ -6,7 +6,7 @@
 /*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/25 22:34:13 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/25 23:23:06 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,7 +324,7 @@ int test_memcpy(int *s) // MEMCPY
     if (strcmp(ft_memcpy(des4, src4, 1), "       a") == 0)
         i++;
 
-    if (i == 3)
+    if (i == 4)
         (*s)++;
     return i;
 }
@@ -332,8 +332,8 @@ int test_memcpy(int *s) // MEMCPY
 int test_memmove(int *s) // MEMMOVE (SAME AS MEMCPY)
 {
     int i = 0;
-  
-   char des1[] = "    ";
+
+    char des1[] = "    ";
     char src1[] = "aaaa";
     if (strcmp(ft_memmove(des1, src1, 2), "aa  ") == 0)
         i++;
@@ -353,30 +353,188 @@ int test_memmove(int *s) // MEMMOVE (SAME AS MEMCPY)
     if (strcmp(ft_memmove(des4, src4, 1), "       a") == 0)
         i++;
 
-    if (i == 3)
+    if (i == 4)
         (*s)++;
     return i;
 }
 
-int test_strcpy(int *s) // STRLCPY
+int test_strlcpy(int *s) // STRLCPY
 {
     int i = 0;
-  
-   
 
-    if (i == 3)
+    char des1[] = "a";
+    char src1[] = "bb";
+    if (ft_strlcpy(des1, src1, 2) == 2)
+        i++;
+
+    char des2[] = "aaa";
+    char src2[] = "bb";
+    if (ft_strlcpy(des2, src2, 0) == 2)
+        i++;
+
+    char des3[] = "aaa";
+    char src3[] = "bb";
+    if (ft_strlcpy(des3, src3, 99) == 2)
+        i++;
+
+    char des4[] = "aaa";
+    char src4[] = "\0b";
+    if (ft_strlcpy(des4, src4, 1) == 0)
+        i++;
+
+    if (i == 4)
         (*s)++;
     return i;
 }
 
+int test_strlcat(int *s) // STRLCAT
+{
+    int i = 0;
 
+    char des1[] = "aaa";
+    char src1[] = "bb";
+    if (ft_strlcat(des1, src1, 5) == 5)
+        i++;
+
+    char des2[] = "aaa";
+    char src2[] = "bb";
+    if (ft_strlcat(des2, src2, 0) == 2)
+        i++;
+
+    char des3[] = "";
+    char src3[] = "";
+    if (ft_strlcat(des3, src3, 10000000) == 0)
+        i++;
+
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_toupper(int *s) // TOUPPER
+{
+    int i = 0;
+
+    if (ft_toupper('a') == 'A')
+        i++;
+    if (ft_toupper('z') == 'Z')
+        i++;
+    if (ft_toupper('0') == '0')
+        i++;
+    if (ft_toupper(' ') == ' ')
+        i++;
+
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_tolower(int *s) // TOLOWER
+{
+    int i = 0;
+
+    if (ft_tolower('A') == 'a')
+        i++;
+    if (ft_tolower('Z') == 'z')
+        i++;
+    if (ft_tolower('0') == '0')
+        i++;
+    if (ft_tolower(' ') == ' ')
+        i++;
+
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_strchr(int *s) // STRCHR
+{
+    int i = 0;
+    const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
+    const char *str_empty = "";
+    const char *str_name = "Ali SARIASLAN";
+
+    if (strcmp(ft_strchr(str, '\''), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
+        i++;
+    if (strcmp(ft_strchr(str, '\0'), "") == 0)
+        i++;
+    if (strcmp(ft_strchr(str_empty, '\0'), "") == 0)
+        i++;
+    if (strcmp(ft_strchr(str_name, 'A'), "Ali SARIASLAN") == 0)
+        i++;
+    if (strcmp(ft_strchr(str_name, 'N'), "N") == 0)
+        i++;
+
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_strrchr(int *s) // strRchr
+{
+    int i = 0;
+    const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
+    const char *str_empty = "";
+    const char *str_name = "Ali SARIASLAN";
+
+  if (strcmp(ft_strrchr(str, '\''), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
+        i++;
+    if (strcmp(ft_strrchr(str, '\0'), "") == 0)
+        i++;
+    if (strcmp(ft_strrchr(str_empty, '\0'), "") == 0)
+        i++;
+    if (strcmp(ft_strrchr(str_name, 'A'), "AN") == 0)
+        i++;
+    if (strcmp(ft_strrchr(str_name, 'N'), "N") == 0)
+        i++;
+
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_strncmp(int *s) // strNcmp
+{
+    int i = 0;
+    
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_memchr(int *s) // memCHR
+{
+    int i = 0;
+    
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+
+int test_memcmp(int *s) // memCMP
+{
+    int i = 0;
+    
+    if (i == 4)
+        (*s)++;
+    return i;
+}
+int test_strnstr(int *s) // strNstr
+{
+    int i = 0;
+    
+    if (i == 4)
+        (*s)++;
+    return i;
+}
 
 void TESTAREA() // CASUAL AREA
 {
-    char des1[] = "a";
-    char src1[] = "bb";
+    const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
+    const char *str_empty = "";
+    const char *str_name = "Ali SARIASLAN";
 
-    printf("sonuc:%s",ft_memmove(des1, src1, 2));
+    printf("%s", ft_strrchr(str_name, 'A'));
 }
 
 void HR()
@@ -412,7 +570,25 @@ int main(void)
     HR();
     printf("12.  MemMOVE başarılı test sayısı: %d/4", test_memmove(&s));
     HR();
-    printf("13.  StrlCPY başarılı test sayısı: %d/4", test_strcpy(&s));
+    printf("13.  StrlCPY başarılı test sayısı: %d/4", test_strlcpy(&s));
+    HR();
+    printf("14.  StrlCAT başarılı test sayısı: %d/3", test_strlcat(&s));
+    HR();
+    printf("15.  ToUPPER başarılı test sayısı: %d/4", test_toupper(&s));
+    HR();
+    printf("16.  ToLOWER başarılı test sayısı: %d/4", test_tolower(&s));
+    HR();
+    printf("17.  StrCHR başarılı test sayısı: %d/5", test_strchr(&s));
+    HR();
+    printf("18.  STRRchr başarılı test sayısı: %d/5", test_strrchr(&s));
+    HR();
+     printf("19.  strNcmp başarılı test sayısı: %d/5", test_strncmp(&s));
+    HR();
+     printf("20.  memCHR başarılı test sayısı: %d/5", test_memchr(&s));
+    HR();
+     printf("21.  memCMP başarılı test sayısı: %d/5", test_memcmp(&s));
+    HR();
+     printf("22.  strNstr başarılı test sayısı: %d/5", test_strnstr(&s));
     HR();
 
     printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/2", s);

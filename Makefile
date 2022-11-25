@@ -6,7 +6,7 @@
 #    By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:40:05 by msariasl          #+#    #+#              #
-#    Updated: 2022/11/25 22:26:04 by msariasl         ###   ########.fr        #
+#    Updated: 2022/11/25 22:58:07 by msariasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,19 +36,5 @@ test:
 	$(DEBUG)
 
 debug:
+	clear
 	$(DEBUG)
-
-push:
-	git add .
-	git commit -m "init"
-	git push
-
-
-
-
-	
-	
-	
-	
-	
-
