@@ -6,7 +6,7 @@
 /*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/25 23:23:06 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/26 02:55:03 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -406,7 +406,7 @@ int test_strlcat(int *s) // STRLCAT
     if (ft_strlcat(des3, src3, 10000000) == 0)
         i++;
 
-    if (i == 4)
+    if (i == 3)
         (*s)++;
     return i;
 }
@@ -465,7 +465,7 @@ int test_strchr(int *s) // STRCHR
     if (strcmp(ft_strchr(str_name, 'N'), "N") == 0)
         i++;
 
-    if (i == 4)
+    if (i == 5)
         (*s)++;
     return i;
 }
@@ -477,7 +477,7 @@ int test_strrchr(int *s) // strRchr
     const char *str_empty = "";
     const char *str_name = "Ali SARIASLAN";
 
-  if (strcmp(ft_strrchr(str, '\''), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
+    if (strcmp(ft_strrchr(str, '\''), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
         i++;
     if (strcmp(ft_strrchr(str, '\0'), "") == 0)
         i++;
@@ -488,7 +488,7 @@ int test_strrchr(int *s) // strRchr
     if (strcmp(ft_strrchr(str_name, 'N'), "N") == 0)
         i++;
 
-    if (i == 4)
+    if (i == 5)
         (*s)++;
     return i;
 }
@@ -496,8 +496,21 @@ int test_strrchr(int *s) // strRchr
 int test_strncmp(int *s) // strNcmp
 {
     int i = 0;
-    
-    if (i == 4)
+
+    if (ft_strncmp("aa", "aa", 2) == 0)
+        i++;
+    if (ft_strncmp("aa", "aA", 2) == 32)
+        i++;
+    if (ft_strncmp("aa", "aA", 5) == 32)
+        i++;
+    if (ft_strncmp("aa", "A", 0) == 0)
+        i++;
+    if (ft_strncmp("aa", "\0", 2) == 97)
+        i++;
+    if (ft_strncmp("aA", "aa", 2) == -32)
+        i++;
+
+    if (i == 6)
         (*s)++;
     return i;
 }
@@ -505,8 +518,27 @@ int test_strncmp(int *s) // strNcmp
 int test_memchr(int *s) // memCHR
 {
     int i = 0;
-    
-    if (i == 4)
+
+    const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
+    const char *str_empty = "";
+    const char *str_name = "Ali SARIASLAN";
+
+    if (strcmp(ft_memchr(str, '\'', 99), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
+        i++;
+    if (strcmp(ft_memchr(str, '\0', 99), "") == 0)
+        i++;
+    if (strcmp(ft_memchr(str_empty, '\0', 99), "") == 0)
+        i++;
+    if (strcmp(ft_memchr(str_name, 'A', 99), "Ali SARIASLAN") == 0)
+        i++;
+    if (strcmp(ft_memchr(str_name, 'N', 99), "N") == 0) // FIRST 5 SAME AS STRCHR
+        i++;
+    if (strcmp(ft_memchr(str_name, 'S', 5), "SARIASLAN") == 0)
+        i++;
+    if (strcmp(ft_memchr(str_name, 'S', -1), "SARIASLAN") == 0)
+        i++;
+
+    if (i == 7)
         (*s)++;
     return i;
 }
@@ -514,27 +546,175 @@ int test_memchr(int *s) // memCHR
 int test_memcmp(int *s) // memCMP
 {
     int i = 0;
-    
-    if (i == 4)
+
+    if (ft_memcmp("aa", "aa", 2) == 0)
+        i++;
+    if (ft_memcmp("aa", "aA", 2) == 32)
+        i++;
+    if (ft_memcmp("aa", "aA", 5) == 32)
+        i++;
+    if (ft_memcmp("aa", "A", 0) == 0)
+        i++;
+    if (ft_memcmp("aa", "\0", 2) == 97)
+        i++;
+    if (ft_memcmp("aA", "aa", 2) == -32) // FISRT 6 SAME AS STRNCMP
+        i++;
+    if (ft_memcmp("aa", "aA", -1) == 32)
+        i++;
+
+    if (i == 7)
         (*s)++;
     return i;
 }
+
 int test_strnstr(int *s) // strNstr
 {
     int i = 0;
-    
-    if (i == 4)
+    const char *str_p1 = "Fazla kod kalbe iyi gelirmiş arkadaşlar.";
+
+    if (strcmp(ft_strnstr(str_p1, "kod", 9), "kod kalbe iyi gelirmiş arkadaşlar.") == 0)
+        i++;
+    if (strcmp(ft_strnstr(str_p1, "r", 29), "rmiş arkadaşlar.") == 0)
+        i++;
+    if (strcmp(ft_strnstr(str_p1, "F", 1), "Fazla kod kalbe iyi gelirmiş arkadaşlar.") == 0)
+        i++;
+
+    if (i == 3)
+        (*s)++;
+    return i;
+}
+
+int test_calloc(int *s) // Calloc (REQUIRES MORE DEV.)
+{
+    int i = 0;
+
+    int *a = (int *)ft_calloc(0, sizeof(int));
+    a[0] = 21;
+    a[1] = 2;
+    a[2] = 5;
+    a[3] = 3;
+    if (sizeof(*a) == 4)
+        i++;
+    if (sizeof(a) == 8)
+        i++;
+    if (a[3] == 3)
+        i++;
+
+    int *b = (int *)calloc(0, sizeof(int));
+    b++;
+    *b = 23;
+    if (*b == 23)
+        i++;
+    b++;
+    *b = 22;
+    if (*b == 22)
+        i++;
+
+    if (i == 5)
+        (*s)++;
+    return i;
+}
+
+int test_strdup(int *s) // Strdup
+{
+    int i = 0;
+    char *name_p = "Mr. Balbazar";
+    char name_a[] = "Mr. Balbazar";
+
+    if (strcmp(ft_strdup(name_a), name_p) == 0)
+        i++;
+    if (strcmp(ft_strdup(name_p), name_a) == 0)
+        i++;
+    if (strcmp(ft_strdup(""), "") == 0)
+        i++;
+    if (strcmp(ft_strdup("\0\0"), "") == 0)
+        i++;
+    if (strcmp(ft_strdup(""), "\0\0") == 0)
+        i++;
+
+    if (i == 5)
+        (*s)++;
+    return i;
+}
+
+int test_substr(int *s) // Substr
+{
+    int i = 0;
+    char *sent = "Eat -> Code -> Sleep -> Repeat";
+    char *send = "\0Eat -> Code -> Sleep -> Repeat";
+
+    if (strcmp(ft_substr(sent, 0, 4), "Eat ") == 0)
+        i++;
+    if (strcmp(ft_substr(sent, 0, 0), "") == 0)
+        i++;
+    if (strcmp(ft_substr(sent, 5, 0), "") == 0)
+        i++;
+    if (strcmp(ft_substr(sent, 5, 2), "> ") == 0)
+        i++;
+    if (strcmp(ft_substr(send, 5, 2), "") == 0)
+        i++;
+
+    if (i == 5)
+        (*s)++;
+    return i;
+}
+
+int test_strjoin(int *s) // Strjoin
+{
+    int i = 0;
+    char *a1 = "Alo -> La";
+    char *b1 = "Lo\0";
+    if (strcmp(ft_strjoin(a1, b1), "Alo -> LaLo") == 0)
+        i++;
+    if (strcmp(ft_strjoin(b1, a1), "LoAlo -> La") == 0)
+        i++;
+    char *a2 = "";
+    char *b2 = "";
+    if (strcmp(ft_strjoin(b2, a2), "") == 0)
+        i++;
+
+    if (i == 3)
+        (*s)++;
+    return i;
+}
+
+int test_strtrim(int *s) // Strtrim
+{
+    int i = 0;
+    char *str = "Eat -> Code -> Sleep -> Repeat";
+    char *trim = "Eat";
+    if (strcmp(ft_strtrim(str, trim), " -> Code -> Sleep -> Repe") == 0)
+        i++;
+
+    if (i == 1)
+        (*s)++;
+    return i;
+}
+
+int test_split(int *s) // Split
+{
+    int i = 0;
+    char *str = "Hello from anatolia. We have goals about 2023 and everything will be perfect in that year. \0 ";
+
+    char **stra = ft_split(str, ' ');
+    int a = 0;
+    while (stra[a] != 0)
+        a++;
+
+    if (a == 16)
+        i++;
+    if (strcmp(stra[0], "Hello") == 0)
+        i++;
+    if (strcmp(stra[15], "year.") == 0)
+        i++;
+
+    if (i == 3)
         (*s)++;
     return i;
 }
 
 void TESTAREA() // CASUAL AREA
 {
-    const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
-    const char *str_empty = "";
-    const char *str_name = "Ali SARIASLAN";
-
-    printf("%s", ft_strrchr(str_name, 'A'));
 }
 
 void HR()
@@ -582,13 +762,25 @@ int main(void)
     HR();
     printf("18.  STRRchr başarılı test sayısı: %d/5", test_strrchr(&s));
     HR();
-     printf("19.  strNcmp başarılı test sayısı: %d/5", test_strncmp(&s));
+    printf("19.  strNcmp başarılı test sayısı: %d/6", test_strncmp(&s));
     HR();
-     printf("20.  memCHR başarılı test sayısı: %d/5", test_memchr(&s));
+    printf("20.  memCHR başarılı test sayısı: %d/7", test_memchr(&s));
     HR();
-     printf("21.  memCMP başarılı test sayısı: %d/5", test_memcmp(&s));
+    printf("21.  memCMP başarılı test sayısı: %d/7", test_memcmp(&s));
     HR();
-     printf("22.  strNstr başarılı test sayısı: %d/5", test_strnstr(&s));
+    printf("22.  strNstr başarılı test sayısı: %d/3", test_strnstr(&s));
+    HR();
+    printf("23.  Calloc başarılı test sayısı: %d/5", test_calloc(&s));
+    HR();
+    printf("24.  Strdup başarılı test sayısı: %d/5", test_strdup(&s));
+    HR();
+    printf("25.  Substr başarılı test sayısı: %d/5", test_substr(&s));
+    HR();
+    printf("26.  Strjoin başarılı test sayısı: %d/3", test_strjoin(&s));
+    HR();
+    printf("27.  Strtrim başarılı test sayısı: %d/1", test_strtrim(&s));
+    HR();
+    printf("28.  Split başarılı test sayısı: %d/3", test_split(&s));
     HR();
 
     printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/2", s);
