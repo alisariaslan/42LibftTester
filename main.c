@@ -6,7 +6,7 @@
 /*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/26 04:12:05 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/26 04:28:18 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -707,6 +707,72 @@ int test_putcharfd(int *s) // putchar_fd
     return i;
 }
 
+int test_putstrfd(int *s) // putSTR_fd
+{
+    int i = 0;
+    int fd = creat("putstr_fd.txt", 0777);
+    if (fd == -1)
+        printf("Dosya oluşturma hatası!\t");
+    else
+        ft_putstr_fd("Maouluniette bunu beğendi.", fd);
+    fd = open("putstr_fd.txt", O_RDWR, 0777);
+    if (fd == -1)
+        printf("Dosya açılırken hata verdi!\t");
+    char *temp = (char *)malloc(27 * sizeof(char));
+    ssize_t st = read(fd, temp, 27);
+    if (strcmp(temp, "Maouluniette bunu beğendi.") == 0)
+        i++;
+    if (st == 27)
+        i++;
+    if (i == 2)
+        (*s)++;
+    return i;
+}
+
+int test_putendlfd(int *s) // putENDl
+{
+    int i = 0;
+    int fd = creat("putendl_fd.txt", 0777);
+    if (fd == -1)
+        printf("Dosya oluşturma hatası!\t");
+    else
+        ft_putendl_fd("Maouluniette bunu beğendi.", fd);
+    fd = open("putendl_fd.txt", O_RDWR, 0777);
+    if (fd == -1)
+        printf("Dosya açılırken hata verdi!\t");
+    char *temp = (char *)malloc(28 * sizeof(char));
+    ssize_t st = read(fd, temp, 28);
+    if (strcmp(temp, "Maouluniette bunu beğendi.\n") == 0)
+        i++;
+    if (st == 28)
+        i++;
+    if (i == 2)
+        (*s)++;
+    return i;
+}
+
+int test_putnbrfd(int *s) // putNBR
+{
+    int i = 0;
+    int fd = creat("putnbr_fd.txt", 0777);
+    if (fd == -1)
+        printf("Dosya oluşturma hatası!\t");
+    else
+        ft_putnbr_fd(234232342, fd);
+    fd = open("putnbr_fd.txt", O_RDWR, 0777);
+    if (fd == -1)
+        printf("Dosya açılırken hata verdi!\t");
+    char *temp = (char *)malloc(9* sizeof(char));
+    ssize_t st = read(fd, temp, 9);
+    if (strcmp(temp, "234232342") == 0)
+        i++;
+    if (st == 9)
+        i++;
+    if (i == 2)
+        (*s)++;
+    return i;
+}
+
 void TESTAREA() // CASUAL AREA
 {
 }
@@ -780,7 +846,13 @@ int main(void)
     HR();
     printf("30.  Str_iteri başarılı test sayısı: %d/2", test_striteri(&s));
     HR();
-    printf("31.  ft_putchar_fd başarılı test sayısı: %d/2", test_putcharfd(&s));
+    printf("31.  putCHAR_fd başarılı test sayısı: %d/2", test_putcharfd(&s));
+    HR();
+    printf("31.  putSTR_fd başarılı test sayısı: %d/2", test_putstrfd(&s));
+    HR();
+      printf("32.  putENDl_fd başarılı test sayısı: %d/2", test_putendlfd(&s));
+    HR();
+      printf("33.  putNBR_fd başarılı test sayısı: %d/2", test_putnbrfd(&s));
     HR();
 
     printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/2", s);
