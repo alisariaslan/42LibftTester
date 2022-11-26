@@ -6,7 +6,7 @@
 #    By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:40:05 by msariasl          #+#    #+#              #
-#    Updated: 2022/11/26 04:41:57 by msariasl         ###   ########.fr        #
+#    Updated: 2022/11/26 04:57:05 by msariasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,27 +27,30 @@ $(NAME): $(OBJ)
 
 clean:
 	clear
-	rm -rf ../*.o
-	rm -rf $(NAME)
-	rm -rf "a.out"
+	@rm -rf ../*.o
+	@rm -rf $(NAME)
+	@rm -rf "a.out"
+	@rm -rf *.txt
+	@echo Temizlendi.
 
 show:
 	clear
 	nm $(NAME)
+	@echo Bütün arşiv dosyaları getirildi.
 
 mando:
-	make clean
-	make
+	@echo Zorunlu kısım için test çalıştırılıyor...
+	@make
 	$(DEBUG)
 
 bonus:
-	make clean
-	make
-	$(DEBUG_B)
+	@echo Bonus kısım için test çalıştırılıyor...
+	@make
+	@$(DEBUG_B)
 	
 test:
-	make mando
-	make bonus
+	@make mando
+	@make bonus
 
 debug:
 	clear

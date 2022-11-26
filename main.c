@@ -6,7 +6,7 @@
 /*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/26 04:38:43 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/26 04:45:21 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -785,6 +785,7 @@ void HR()
 int main(void)
 {
     int s = 0;
+    printf("\n\n\n----> M A N D O T O R Y ___ P A R T <-----\n\n");
     HR();
     printf("1.  Atoi başarılı test sayısı: %d/10", test_atoi(&s));
     HR();
