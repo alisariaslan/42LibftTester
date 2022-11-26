@@ -6,18 +6,22 @@
 /*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/26 02:55:03 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/26 04:12:05 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 #include <string.h>
+#include <stdlib.h>
+#include <stddef.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
 
 int test_atoi(int *s) // ATOI
 {
     int i = 0;
     char *c[] = {"test1", "0", "-0", "123+123", "-123123", "23400.1", "\01213", "1test", "21474483649", "-21474483649"};
-
     if (ft_atoi(c[0]) == 0)
         i++;
     if (ft_atoi(c[1]) == 0)
@@ -28,7 +32,6 @@ int test_atoi(int *s) // ATOI
         i++;
     if (ft_atoi(c[4]) == -123123) // 5
         i++;
-
     if (ft_atoi(c[5]) == 23400)
         i++;
     if (ft_atoi(c[6]) == 13)
@@ -39,7 +42,6 @@ int test_atoi(int *s) // ATOI
         i++;
     if (ft_atoi(c[9]) == 0) // 10
         i++;
-
     if (i == 10)
         (*s)++;
     return i;
@@ -48,7 +50,6 @@ int test_atoi(int *s) // ATOI
 int test_itoa(int *s) // ITOA
 {
     int i = 0;
-
     if (strcmp(ft_itoa(12), "12") == 0)
         i++;
     if (strcmp(ft_itoa(-12), "-12") == 0)
@@ -67,7 +68,6 @@ int test_itoa(int *s) // ITOA
         i++;
     if (strcmp(ft_itoa(-99999999), "-99999999") == 0) // 9
         i++;
-
     if (i == 9)
         (*s)++;
     return i;
@@ -76,7 +76,6 @@ int test_itoa(int *s) // ITOA
 int test_isdigit(int *s) // ISDIGIT
 {
     int i = 0;
-
     if (ft_isdigit(0) == 0)
         i++;
     if (ft_isdigit(0) == 0)
@@ -99,7 +98,6 @@ int test_isdigit(int *s) // ISDIGIT
         i++;
     if (ft_isdigit('0') == 0)
         i++;
-
     if (i == 10)
         (*s)++;
     return i;
@@ -108,7 +106,6 @@ int test_isdigit(int *s) // ISDIGIT
 int test_isalpha(int *s) // ISALPHA
 {
     int i = 0;
-
     if (ft_isalpha('A') != 0)
         i++;
     if (ft_isalpha('a') != 0)
@@ -125,7 +122,6 @@ int test_isalpha(int *s) // ISALPHA
         i++;
     if (ft_isalpha('\t') == 0)
         i++;
-
     if (i == 8)
         (*s)++;
     return i;
@@ -134,7 +130,6 @@ int test_isalpha(int *s) // ISALPHA
 int test_isalnum(int *s) // ISALNUM
 {
     int i = 0;
-
     if (ft_isalnum('a') != 0)
         i++;
     if (ft_isalnum('A') != 0)
@@ -155,7 +150,6 @@ int test_isalnum(int *s) // ISALNUM
         i++;
     if (ft_isalnum('\t') == 0)
         i++;
-
     if (i == 10)
         (*s)++;
     return i;
@@ -164,7 +158,6 @@ int test_isalnum(int *s) // ISALNUM
 int test_isascii(int *s) // ISASCII
 {
     int i = 0;
-
     if (ft_isascii(0) == 1)
         i++;
     if (ft_isascii(0177) == 1)
@@ -189,7 +182,6 @@ int test_isascii(int *s) // ISASCII
         i++;
     if (ft_isascii(-1) == 0)
         i++;
-
     if (i == 11)
         (*s)++;
     return i;
@@ -198,7 +190,6 @@ int test_isascii(int *s) // ISASCII
 int test_isprint(int *s) // ISASCII
 {
     int i = 0;
-
     if (ft_isprint(040) != 0)
         i++;
     if (ft_isprint(075) != 0)
@@ -217,7 +208,6 @@ int test_isprint(int *s) // ISASCII
         i++;
     if (ft_isprint(54) != 0)
         i++;
-
     if (i == 9)
         (*s)++;
     return i;
@@ -226,7 +216,6 @@ int test_isprint(int *s) // ISASCII
 int test_strlen(int *s) // STRLEN
 {
     int i = 0;
-
     if (ft_strlen("asadsadas") == 9)
         i++;
     if (ft_strlen("ZZZZZZ") == 6)
@@ -241,7 +230,6 @@ int test_strlen(int *s) // STRLEN
         i++;
     if (ft_strlen("  ") == 2)
         i++;
-
     if (i == 7)
         (*s)++;
     return i;
@@ -250,27 +238,21 @@ int test_strlen(int *s) // STRLEN
 int test_memset(int *s) // MEMSET
 {
     int i = 0;
-
     char str1[] = "aaaa";
     if (strcmp(ft_memset(str1, 'X', 2), "XXaa") == 0)
         i++;
-
     char str2[] = " ";
     if (strcmp(ft_memset(str2, 'X', 2), memset(str2, 'X', 2)) == 0)
         i++;
-
     char str3[] = " ";
     if (strcmp(ft_memset(str3, 0, 2), memset(str3, 0, 2)) == 0)
         i++;
-
     char str4[] = "\t\t\t\t \t \t \t\n \n\n\n\n\0\1\2";
     if (strcmp(ft_memset(str4, 0176, 20), memset(str4, 0176, 20)) == 0)
         i++;
-
     char str5[] = "";
     if (strcmp(ft_memset(str5, 0176, 0), "") == 0)
         i++;
-
     if (i == 5)
         (*s)++;
     return i;
@@ -279,22 +261,18 @@ int test_memset(int *s) // MEMSET
 int test_bzero(int *s) // BZERO
 {
     int i = 0;
-
     char str1[] = "";
     ft_bzero(str1, 4);
     if (strcmp(str1, "") == 0)
         i++;
-
     char str2[] = " aaa \0 0";
     ft_bzero(str2, 0);
     if (strcmp(str2, " aaa \0 0") == 0)
         i++;
-
     char str3[] = "\0\0\0\0 XxX";
     ft_bzero(str3, 2);
     if (strcmp(str3, "") == 0)
         i++;
-
     if (i == 3)
         (*s)++;
     return i;
@@ -303,27 +281,22 @@ int test_bzero(int *s) // BZERO
 int test_memcpy(int *s) // MEMCPY
 {
     int i = 0;
-
     char des1[] = "    ";
     char src1[] = "aaaa";
     if (strcmp(ft_memcpy(des1, src1, 2), "aa  ") == 0)
         i++;
-
     char des2[] = " ";
     char src2[] = "\0\0\0";
     if (strcmp(ft_memcpy(des2, src2, 10), "") == 0)
         i++;
-
     char des3[] = "       a";
     char src3[] = " ";
     if (strcmp(ft_memcpy(des3, src3, 2), " ") == 0)
         i++;
-
     char des4[] = "       a";
     char src4[] = " ";
     if (strcmp(ft_memcpy(des4, src4, 1), "       a") == 0)
         i++;
-
     if (i == 4)
         (*s)++;
     return i;
@@ -332,27 +305,22 @@ int test_memcpy(int *s) // MEMCPY
 int test_memmove(int *s) // MEMMOVE (SAME AS MEMCPY)
 {
     int i = 0;
-
     char des1[] = "    ";
     char src1[] = "aaaa";
     if (strcmp(ft_memmove(des1, src1, 2), "aa  ") == 0)
         i++;
-
     char des2[] = " ";
     char src2[] = "\0\0\0";
     if (strcmp(ft_memmove(des2, src2, 10), "") == 0)
         i++;
-
     char des3[] = "       a";
     char src3[] = " ";
     if (strcmp(ft_memmove(des3, src3, 2), " ") == 0)
         i++;
-
     char des4[] = "       a";
     char src4[] = " ";
     if (strcmp(ft_memmove(des4, src4, 1), "       a") == 0)
         i++;
-
     if (i == 4)
         (*s)++;
     return i;
@@ -361,27 +329,22 @@ int test_memmove(int *s) // MEMMOVE (SAME AS MEMCPY)
 int test_strlcpy(int *s) // STRLCPY
 {
     int i = 0;
-
     char des1[] = "a";
     char src1[] = "bb";
     if (ft_strlcpy(des1, src1, 2) == 2)
         i++;
-
     char des2[] = "aaa";
     char src2[] = "bb";
     if (ft_strlcpy(des2, src2, 0) == 2)
         i++;
-
     char des3[] = "aaa";
     char src3[] = "bb";
     if (ft_strlcpy(des3, src3, 99) == 2)
         i++;
-
     char des4[] = "aaa";
     char src4[] = "\0b";
     if (ft_strlcpy(des4, src4, 1) == 0)
         i++;
-
     if (i == 4)
         (*s)++;
     return i;
@@ -390,22 +353,18 @@ int test_strlcpy(int *s) // STRLCPY
 int test_strlcat(int *s) // STRLCAT
 {
     int i = 0;
-
     char des1[] = "aaa";
     char src1[] = "bb";
     if (ft_strlcat(des1, src1, 5) == 5)
         i++;
-
     char des2[] = "aaa";
     char src2[] = "bb";
     if (ft_strlcat(des2, src2, 0) == 2)
         i++;
-
     char des3[] = "";
     char src3[] = "";
     if (ft_strlcat(des3, src3, 10000000) == 0)
         i++;
-
     if (i == 3)
         (*s)++;
     return i;
@@ -414,7 +373,6 @@ int test_strlcat(int *s) // STRLCAT
 int test_toupper(int *s) // TOUPPER
 {
     int i = 0;
-
     if (ft_toupper('a') == 'A')
         i++;
     if (ft_toupper('z') == 'Z')
@@ -423,7 +381,6 @@ int test_toupper(int *s) // TOUPPER
         i++;
     if (ft_toupper(' ') == ' ')
         i++;
-
     if (i == 4)
         (*s)++;
     return i;
@@ -432,7 +389,6 @@ int test_toupper(int *s) // TOUPPER
 int test_tolower(int *s) // TOLOWER
 {
     int i = 0;
-
     if (ft_tolower('A') == 'a')
         i++;
     if (ft_tolower('Z') == 'z')
@@ -441,7 +397,6 @@ int test_tolower(int *s) // TOLOWER
         i++;
     if (ft_tolower(' ') == ' ')
         i++;
-
     if (i == 4)
         (*s)++;
     return i;
@@ -453,7 +408,6 @@ int test_strchr(int *s) // STRCHR
     const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
     const char *str_empty = "";
     const char *str_name = "Ali SARIASLAN";
-
     if (strcmp(ft_strchr(str, '\''), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
         i++;
     if (strcmp(ft_strchr(str, '\0'), "") == 0)
@@ -464,7 +418,6 @@ int test_strchr(int *s) // STRCHR
         i++;
     if (strcmp(ft_strchr(str_name, 'N'), "N") == 0)
         i++;
-
     if (i == 5)
         (*s)++;
     return i;
@@ -476,7 +429,6 @@ int test_strrchr(int *s) // strRchr
     const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
     const char *str_empty = "";
     const char *str_name = "Ali SARIASLAN";
-
     if (strcmp(ft_strrchr(str, '\''), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
         i++;
     if (strcmp(ft_strrchr(str, '\0'), "") == 0)
@@ -487,7 +439,6 @@ int test_strrchr(int *s) // strRchr
         i++;
     if (strcmp(ft_strrchr(str_name, 'N'), "N") == 0)
         i++;
-
     if (i == 5)
         (*s)++;
     return i;
@@ -496,7 +447,6 @@ int test_strrchr(int *s) // strRchr
 int test_strncmp(int *s) // strNcmp
 {
     int i = 0;
-
     if (ft_strncmp("aa", "aa", 2) == 0)
         i++;
     if (ft_strncmp("aa", "aA", 2) == 32)
@@ -509,7 +459,6 @@ int test_strncmp(int *s) // strNcmp
         i++;
     if (ft_strncmp("aA", "aa", 2) == -32)
         i++;
-
     if (i == 6)
         (*s)++;
     return i;
@@ -518,11 +467,9 @@ int test_strncmp(int *s) // strNcmp
 int test_memchr(int *s) // memCHR
 {
     int i = 0;
-
     const char *str = "-> Yeni gelenlerin MOULINETTE 'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-\0 Ne dersin?";
     const char *str_empty = "";
     const char *str_name = "Ali SARIASLAN";
-
     if (strcmp(ft_memchr(str, '\'', 99), "'den dayak yemesini istemiyorsan gel bu projeyi geliştirelim <-") == 0)
         i++;
     if (strcmp(ft_memchr(str, '\0', 99), "") == 0)
@@ -537,7 +484,6 @@ int test_memchr(int *s) // memCHR
         i++;
     if (strcmp(ft_memchr(str_name, 'S', -1), "SARIASLAN") == 0)
         i++;
-
     if (i == 7)
         (*s)++;
     return i;
@@ -546,7 +492,6 @@ int test_memchr(int *s) // memCHR
 int test_memcmp(int *s) // memCMP
 {
     int i = 0;
-
     if (ft_memcmp("aa", "aa", 2) == 0)
         i++;
     if (ft_memcmp("aa", "aA", 2) == 32)
@@ -561,7 +506,6 @@ int test_memcmp(int *s) // memCMP
         i++;
     if (ft_memcmp("aa", "aA", -1) == 32)
         i++;
-
     if (i == 7)
         (*s)++;
     return i;
@@ -571,14 +515,12 @@ int test_strnstr(int *s) // strNstr
 {
     int i = 0;
     const char *str_p1 = "Fazla kod kalbe iyi gelirmiş arkadaşlar.";
-
     if (strcmp(ft_strnstr(str_p1, "kod", 9), "kod kalbe iyi gelirmiş arkadaşlar.") == 0)
         i++;
     if (strcmp(ft_strnstr(str_p1, "r", 29), "rmiş arkadaşlar.") == 0)
         i++;
     if (strcmp(ft_strnstr(str_p1, "F", 1), "Fazla kod kalbe iyi gelirmiş arkadaşlar.") == 0)
         i++;
-
     if (i == 3)
         (*s)++;
     return i;
@@ -587,7 +529,6 @@ int test_strnstr(int *s) // strNstr
 int test_calloc(int *s) // Calloc (REQUIRES MORE DEV.)
 {
     int i = 0;
-
     int *a = (int *)ft_calloc(0, sizeof(int));
     a[0] = 21;
     a[1] = 2;
@@ -599,8 +540,7 @@ int test_calloc(int *s) // Calloc (REQUIRES MORE DEV.)
         i++;
     if (a[3] == 3)
         i++;
-
-    int *b = (int *)calloc(0, sizeof(int));
+    int *b = (int *)ft_calloc(0, sizeof(int));
     b++;
     *b = 23;
     if (*b == 23)
@@ -609,7 +549,6 @@ int test_calloc(int *s) // Calloc (REQUIRES MORE DEV.)
     *b = 22;
     if (*b == 22)
         i++;
-
     if (i == 5)
         (*s)++;
     return i;
@@ -631,7 +570,6 @@ int test_strdup(int *s) // Strdup
         i++;
     if (strcmp(ft_strdup(""), "\0\0") == 0)
         i++;
-
     if (i == 5)
         (*s)++;
     return i;
@@ -642,7 +580,6 @@ int test_substr(int *s) // Substr
     int i = 0;
     char *sent = "Eat -> Code -> Sleep -> Repeat";
     char *send = "\0Eat -> Code -> Sleep -> Repeat";
-
     if (strcmp(ft_substr(sent, 0, 4), "Eat ") == 0)
         i++;
     if (strcmp(ft_substr(sent, 0, 0), "") == 0)
@@ -653,7 +590,6 @@ int test_substr(int *s) // Substr
         i++;
     if (strcmp(ft_substr(send, 5, 2), "") == 0)
         i++;
-
     if (i == 5)
         (*s)++;
     return i;
@@ -672,7 +608,6 @@ int test_strjoin(int *s) // Strjoin
     char *b2 = "";
     if (strcmp(ft_strjoin(b2, a2), "") == 0)
         i++;
-
     if (i == 3)
         (*s)++;
     return i;
@@ -685,7 +620,6 @@ int test_strtrim(int *s) // Strtrim
     char *trim = "Eat";
     if (strcmp(ft_strtrim(str, trim), " -> Code -> Sleep -> Repe") == 0)
         i++;
-
     if (i == 1)
         (*s)++;
     return i;
@@ -695,20 +629,80 @@ int test_split(int *s) // Split
 {
     int i = 0;
     char *str = "Hello from anatolia. We have goals about 2023 and everything will be perfect in that year. \0 ";
-
     char **stra = ft_split(str, ' ');
     int a = 0;
     while (stra[a] != 0)
         a++;
-
     if (a == 16)
         i++;
     if (strcmp(stra[0], "Hello") == 0)
         i++;
     if (strcmp(stra[15], "year.") == 0)
         i++;
-
     if (i == 3)
+        (*s)++;
+    return i;
+}
+
+char mapi(unsigned int ui, char c)
+{
+    return (++c);
+}
+
+static int var_iter = 0;
+static int var_iter_total = 0;
+void iteri(unsigned int ui, char *c)
+{
+    var_iter = ui;
+    var_iter_total += strlen(c);
+}
+
+int test_strmapi(int *s) // StrMap_i
+{
+    int i = 0;
+    char *str = "Hello from anatolia. We have goals about 2023 and everything will be perfect in that year. \0 ";
+    char *str_new = "\0\0";
+    if (strcmp(ft_strmapi(str, mapi), "Ifmmp!gspn!bobupmjb/!Xf!ibwf!hpbmt!bcpvu!3134!boe!fwfszuijoh!xjmm!cf!qfsgfdu!jo!uibu!zfbs/!") == 0)
+        i++;
+    if (strcmp(ft_strmapi(str_new, mapi), "") == 0)
+        i++;
+    if (i == 2)
+        (*s)++;
+    return i;
+}
+
+int test_striteri(int *s) // Str_iteri
+{
+    int i = 0;
+    char *str = "Hello from anatolia. We have goals about 2023 and everything will be perfect in that year. \0 ";
+    ft_striteri(str, iteri);
+    if (var_iter == 90)
+        i++;
+    if (var_iter_total == 4186)
+        i++;
+    if (i == 2)
+        (*s)++;
+    return i;
+}
+
+int test_putcharfd(int *s) // putchar_fd
+{
+    int i = 0;
+    int fd = creat("putchar_fd.txt", 0777);
+    if (fd == -1)
+        printf("Dosya oluşturma hatası!\t");
+    else
+        ft_putchar_fd('\n', fd);
+    fd = open("putchar_fd.txt", O_RDWR, 0777);
+    if (fd == -1)
+        printf("Dosya açılırken hata verdi!\t");
+    char *temp = (char *)malloc(1 * sizeof(char));
+    ssize_t st = read(fd, temp, 1);
+    if (strcmp(temp, "\n") == 0)
+        i++;
+    if (st == 1)
+        i++;
+    if (i == 2)
         (*s)++;
     return i;
 }
@@ -781,6 +775,12 @@ int main(void)
     printf("27.  Strtrim başarılı test sayısı: %d/1", test_strtrim(&s));
     HR();
     printf("28.  Split başarılı test sayısı: %d/3", test_split(&s));
+    HR();
+    printf("29.  StrMap_i başarılı test sayısı: %d/2", test_strmapi(&s));
+    HR();
+    printf("30.  Str_iteri başarılı test sayısı: %d/2", test_striteri(&s));
+    HR();
+    printf("31.  ft_putchar_fd başarılı test sayısı: %d/2", test_putcharfd(&s));
     HR();
 
     printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/2", s);
