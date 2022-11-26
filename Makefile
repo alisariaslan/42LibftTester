@@ -6,7 +6,7 @@
 #    By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:40:05 by msariasl          #+#    #+#              #
-#    Updated: 2022/11/26 04:57:05 by msariasl         ###   ########.fr        #
+#    Updated: 2022/11/26 05:06:08 by msariasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,10 @@ test:
 	@make mando
 	@make bonus
 
-debug:
+d:
 	clear
 	$(DEBUG)
+
+b:
+	clear
+	$(DEBUG_B)

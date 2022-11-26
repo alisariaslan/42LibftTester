@@ -20,4 +20,7 @@ make clean: It cleans the redundant files created during the test.
 
 make show: Shows files inside archive.
 
-make debug: It is used to debug. Useful for development.
+make d: It is used to debug mandotory part. Useful for development.
+
+make b: It is used to debug bonus part. Useful for development.
+
