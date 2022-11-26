@@ -99,13 +99,24 @@ int test_lstlast(int *s) // LSTLAST
     return i;
 }
 
+static int lst_delone_i;
+void lst_delone_item(void *x)
+{
+    lst_delone_i = 0;
+    t_list *head = x;
+    //head->content = "aaa";
+    //if (strcmp(head->content, "aaa") != 0)
+      //  lst_delone_i++;
+}
+
 int test_lstdelone(int *s) // DELONE (IN DEV.)
 {
-    int i = 0;
-
-    if (i == 1)
+    char *deneme = ft_strdup("AAAA");
+    t_list *head = ft_lstnew(deneme);
+    ft_lstdelone((head), &lst_delone_item);
+    if (lst_delone_i == 1)
         (*s)++;
-    return i;
+    return lst_delone_i;
 }
 
 int test_lstclear(int *s) // LSTCLEAR  (IN DEV.)
@@ -135,31 +146,9 @@ int test_lstmap(int *s) // LSTMAP (IN DEV.)
     return i;
 }
 
-void foo(void *x)
-{
-    
-    
-}
-
 void TESTAREA() // CASUAL AREA
 {
     int i = 0;
-
-    char *deneme = ft_strdup("AAAA");
-    char *test = ft_strdup("LOLOLO");
-    t_list *head = ft_lstnew(deneme);
-    ft_lstadd_back(&head, ft_lstnew(test));
-   
-
-    ft_lstdelone((head->next), &foo);
-
-
-    
-    size_t lists = ft_lstsize(head);
-    
-    printf("%lu %s",lists,head->next->content);
-  
-   
 }
 
 void HR()
