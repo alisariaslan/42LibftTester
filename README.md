@@ -10,8 +10,14 @@ MAKEFILE COMMANDS:
 
 make: Makes archives ready.
 
-make test: Runs the test.
+make mando: Runs the test with only mandotory part.
+
+make bonus: Runs the test with only bonus part.
+
+make test: Runs the test with mandotory parts + bonus parts.
 
 make clean: It cleans the redundant files created during the test.
+
+make show: Shows files inside archive.
 
 make debug: It is used to debug. Useful for development.
