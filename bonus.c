@@ -6,7 +6,7 @@
 /*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 04:36:58 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/26 06:12:53 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/26 14:22:26 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int test_tlist(int *s) // LSTNEW
     head->next = NULL;
     if (strcmp(head->content, "Bu bellek ataması tamamen test amaçlıdır.") == 0)
         i++;
-    if (i == 1)
-        (*s)++;
     return i;
 }
 
@@ -101,36 +99,67 @@ int test_lstlast(int *s) // LSTLAST
     return i;
 }
 
-ft_del(void *delete)
-{
-    t_list *node = delete;
-    free(node->content);
-    free(node);
-}
-
-
-int test_lstdelone(int *s) // DELONE
+int test_lstdelone(int *s) // DELONE (IN DEV.)
 {
     int i = 0;
-   t_list *head = ft_lstnew("Haha. Bu liste bir harika.");
-    ft_lstadd_back(&head, ft_lstnew("AAAAA"));
-    ft_lstadd_back(&head, ft_lstnew("BBBBB"));
-    ft_lstadd_back(&head, ft_lstnew("CCCCC"));
 
-     ft_lstdelone((head), ft_del(head->next));
-    
-    if (strcmp(head->next->content, "CCCCC") == 0)
-        i++;
-        
-    printf("%s",head->next->content);
-        
     if (i == 1)
         (*s)++;
     return i;
 }
 
+int test_lstclear(int *s) // LSTCLEAR  (IN DEV.)
+{
+    int i = 0;
+
+    if (i == 1)
+        (*s)++;
+    return i;
+}
+
+int test_lstiter(int *s) // LSTITER (IN DEV.)
+{
+    int i = 0;
+
+    if (i == 1)
+        (*s)++;
+    return i;
+}
+
+int test_lstmap(int *s) // LSTMAP (IN DEV.)
+{
+    int i = 0;
+
+    if (i == 1)
+        (*s)++;
+    return i;
+}
+
+void foo(void *x)
+{
+    
+    
+}
+
 void TESTAREA() // CASUAL AREA
 {
+    int i = 0;
+
+    char *deneme = ft_strdup("AAAA");
+    char *test = ft_strdup("LOLOLO");
+    t_list *head = ft_lstnew(deneme);
+    ft_lstadd_back(&head, ft_lstnew(test));
+   
+
+    ft_lstdelone((head->next), &foo);
+
+
+    
+    size_t lists = ft_lstsize(head);
+    
+    printf("%lu %s",lists,head->next->content);
+  
+   
 }
 
 void HR()
@@ -155,10 +184,15 @@ int main(void)
     HR();
     printf("5.  lstLast başarılı test sayısı: %d/1", test_lstlast(&s));
     HR();
-     printf("6.  lstDelone başarılı test sayısı: %d/1", test_lstdelone(&s));
+    printf("6.  lstDelone başarılı test sayısı: %d/1  (IN DEV.)", test_lstdelone(&s));
     HR();
-
-    printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/6", s);
+    printf("7.  lstClear başarılı test sayısı: %d/1  (IN DEV.)", test_lstclear(&s));
+    HR();
+    printf("8.  lstIter başarılı test sayısı: %d/1  (IN DEV.)", test_lstiter(&s));
+    HR();
+    printf("9.  lstMap başarılı test sayısı: %d/1  (IN DEV.)", test_lstmap(&s));
+    HR();
+    printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/9", s);
     HR();
     TESTAREA();
     return 0;
