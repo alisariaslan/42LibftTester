@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ali <ali@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/26 04:45:21 by msariasl         ###   ########.fr       */
+/*   Updated: 2022/11/27 22:46:33 by ali              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -787,75 +787,75 @@ int main(void)
     int s = 0;
     printf("\n\n\n----> M A N D O T O R Y ___ P A R T <-----\n\n");
     HR();
-    printf("1.  Atoi başarılı test sayısı: %d/10", test_atoi(&s));
+    printf("1.  Atoi successful test count: %d/10", test_atoi(&s));
     HR();
-    printf("2.  Itoa başarılı test sayısı: %d/9", test_itoa(&s));
+    printf("2.  Itoa successful test count: %d/9", test_itoa(&s));
     HR();
-    printf("3.  IsDigit başarılı test sayısı: %d/10", test_isdigit(&s));
+    printf("3.  IsDigit successful test count: %d/10", test_isdigit(&s));
     HR();
-    printf("4.  IsAlpha başarılı test sayısı: %d/8", test_isalpha(&s));
+    printf("4.  IsAlpha successful test count: %d/8", test_isalpha(&s));
     HR();
-    printf("5.  IsAlnum başarılı test sayısı: %d/10", test_isalnum(&s));
+    printf("5.  IsAlnum successful test count: %d/10", test_isalnum(&s));
     HR();
-    printf("6.  IsAscii başarılı test sayısı: %d/11", test_isascii(&s));
+    printf("6.  IsAscii successful test count: %d/11", test_isascii(&s));
     HR();
-    printf("7.  IsPrint başarılı test sayısı: %d/9", test_isprint(&s));
+    printf("7.  IsPrint successful test count: %d/9", test_isprint(&s));
     HR();
-    printf("8.  Strlen başarılı test sayısı: %d/7", test_strlen(&s));
+    printf("8.  Strlen successful test count: %d/7", test_strlen(&s));
     HR();
-    printf("9.  Memset başarılı test sayısı: %d/5", test_memset(&s));
+    printf("9.  Memset successful test count: %d/5", test_memset(&s));
     HR();
-    printf("10.  Bzero başarılı test sayısı: %d/3", test_bzero(&s));
+    printf("10.  Bzero successful test count: %d/3", test_bzero(&s));
     HR();
-    printf("11.  MemCPY başarılı test sayısı: %d/4", test_memcpy(&s));
+    printf("11.  MemCPY successful test count: %d/4", test_memcpy(&s));
     HR();
-    printf("12.  MemMOVE başarılı test sayısı: %d/4", test_memmove(&s));
+    printf("12.  MemMOVE successful test count: %d/4", test_memmove(&s));
     HR();
-    printf("13.  StrlCPY başarılı test sayısı: %d/4", test_strlcpy(&s));
+    printf("13.  StrlCPY successful test count: %d/4", test_strlcpy(&s));
     HR();
-    printf("14.  StrlCAT başarılı test sayısı: %d/3", test_strlcat(&s));
+    printf("14.  StrlCAT successful test count: %d/3", test_strlcat(&s));
     HR();
-    printf("15.  ToUPPER başarılı test sayısı: %d/4", test_toupper(&s));
+    printf("15.  ToUPPER successful test count: %d/4", test_toupper(&s));
     HR();
-    printf("16.  ToLOWER başarılı test sayısı: %d/4", test_tolower(&s));
+    printf("16.  ToLOWER successful test count: %d/4", test_tolower(&s));
     HR();
-    printf("17.  StrCHR başarılı test sayısı: %d/5", test_strchr(&s));
+    printf("17.  StrCHR successful test count: %d/5", test_strchr(&s));
     HR();
-    printf("18.  STRRchr başarılı test sayısı: %d/5", test_strrchr(&s));
+    printf("18.  STRRchr successful test count: %d/5", test_strrchr(&s));
     HR();
-    printf("19.  strNcmp başarılı test sayısı: %d/6", test_strncmp(&s));
+    printf("19.  strNcmp successful test count: %d/6", test_strncmp(&s));
     HR();
-    printf("20.  memCHR başarılı test sayısı: %d/7", test_memchr(&s));
+    printf("20.  memCHR successful test count: %d/7", test_memchr(&s));
     HR();
-    printf("21.  memCMP başarılı test sayısı: %d/7", test_memcmp(&s));
+    printf("21.  memCMP successful test count: %d/7", test_memcmp(&s));
     HR();
-    printf("22.  strNstr başarılı test sayısı: %d/3", test_strnstr(&s));
+    printf("22.  strNstr successful test count: %d/3", test_strnstr(&s));
     HR();
-    printf("23.  Calloc başarılı test sayısı: %d/5", test_calloc(&s));
+    printf("23.  Calloc successful test count: %d/5", test_calloc(&s));
     HR();
-    printf("24.  Strdup başarılı test sayısı: %d/5", test_strdup(&s));
+    printf("24.  Strdup successful test count: %d/5", test_strdup(&s));
     HR();
-    printf("25.  Substr başarılı test sayısı: %d/5", test_substr(&s));
+    printf("25.  Substr successful test count: %d/5", test_substr(&s));
     HR();
-    printf("26.  Strjoin başarılı test sayısı: %d/3", test_strjoin(&s));
+    printf("26.  Strjoin successful test count: %d/3", test_strjoin(&s));
     HR();
-    printf("27.  Strtrim başarılı test sayısı: %d/1", test_strtrim(&s));
+    printf("27.  Strtrim successful test count: %d/1", test_strtrim(&s));
     HR();
-    printf("28.  Split başarılı test sayısı: %d/3", test_split(&s));
+    printf("28.  Split successful test count: %d/3", test_split(&s));
     HR();
-    printf("29.  StrMap_i başarılı test sayısı: %d/2", test_strmapi(&s));
+    printf("29.  StrMap_i successful test count: %d/2", test_strmapi(&s));
     HR();
-    printf("30.  Str_iteri başarılı test sayısı: %d/2", test_striteri(&s));
+    printf("30.  Str_iteri successful test count: %d/2", test_striteri(&s));
     HR();
-    printf("31.  putCHAR_fd başarılı test sayısı: %d/2", test_putcharfd(&s));
+    printf("31.  putCHAR_fd successful test count: %d/2", test_putcharfd(&s));
     HR();
-    printf("32.  putSTR_fd başarılı test sayısı: %d/2", test_putstrfd(&s));
+    printf("32.  putSTR_fd successful test count: %d/2", test_putstrfd(&s));
     HR();
-    printf("33.  putENDl_fd başarılı test sayısı: %d/2", test_putendlfd(&s));
+    printf("33.  putENDl_fd successful test count: %d/2", test_putendlfd(&s));
     HR();
-    printf("34.  putNBR_fd başarılı test sayısı: %d/2", test_putnbrfd(&s));
+    printf("34.  putNBR_fd successful test count: %d/2", test_putnbrfd(&s));
     HR();
-    printf("TOPLAM BAŞARILI FONKSIYON SAYISI: %d/34", s);
+    printf("SUCCESSFUL FUNCTION COUNT IN TOTAL: %d/34", s);
     HR();
     TESTAREA();
     return 0;

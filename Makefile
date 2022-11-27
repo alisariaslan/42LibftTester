@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+         #
+#    By: ali <ali@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:40:05 by msariasl          #+#    #+#              #
-#    Updated: 2022/11/26 13:24:41 by msariasl         ###   ########.fr        #
+#    Updated: 2022/11/27 22:48:17 by ali              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,15 +36,15 @@ clean:
 show:
 	clear
 	nm $(NAME)
-	@echo Bütün arşiv dosyaları getirildi.
+	@echo Got all archive files.
 
 mando:
-	@echo Zorunlu kısım için test çalıştırılıyor...
+	@echo Test is running now for mandotory part...
 	@make
 	$(DEBUG)
 
 bonus:
-	@echo Bonus kısım için test çalıştırılıyor...
+	@echo Test is running now for bonus part...
 	@make
 	@$(DEBUG_B)
 	
