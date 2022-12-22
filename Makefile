@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ali <ali@student.42.fr>                    +#+  +:+       +#+         #
+#    By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:40:05 by msariasl          #+#    #+#              #
-#    Updated: 2022/11/27 22:48:17 by ali              ###   ########.fr        #
+#    Updated: 2022/12/22 09:14:27 by msariasl         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ FLAGS = -Wall -Wextra -Werror
 $(NAME): $(OBJ)
 		ar -rc $(NAME) $(OBJ)
 
-clean:
+fclean:
 	clear
 	@rm -rf ../*.o
 	@rm -rf $(NAME)

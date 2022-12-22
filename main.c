@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ali <ali@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 13:59:30 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/27 22:46:33 by ali              ###   ########.fr       */
+/*   Updated: 2022/12/22 09:12:28 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,26 +21,26 @@
 int test_atoi(int *s) // ATOI
 {
     int i = 0;
-    char *c[] = {"test1", "0", "-0", "123+123", "-123123", "23400.1", "\01213", "1test", "21474483649", "-21474483649"};
-    if (ft_atoi(c[0]) == 0)
+    char *c[] = {"test1", "0", "-0", "123+123", "-123123", "23400.1", "\01213", "1test", "2147483647", "-2147483648"};
+    if (ft_atoi(c[0]) == atoi(c[0]))
         i++;
-    if (ft_atoi(c[1]) == 0)
+    if (ft_atoi(c[1]) == atoi(c[1]))
         i++;
-    if (ft_atoi(c[2]) == 0)
+    if (ft_atoi(c[2]) == atoi(c[2]))
         i++;
-    if (ft_atoi(c[3]) == 123)
+    if (ft_atoi(c[3]) == atoi(c[3]))
         i++;
-    if (ft_atoi(c[4]) == -123123) // 5
+    if (ft_atoi(c[4]) == atoi(c[4])) // 5
         i++;
-    if (ft_atoi(c[5]) == 23400)
+    if (ft_atoi(c[5]) == atoi(c[5]))
         i++;
-    if (ft_atoi(c[6]) == 13)
+    if (ft_atoi(c[6]) == atoi(c[6]))
         i++;
-    if (ft_atoi(c[7]) == 1)
+    if (ft_atoi(c[7]) == atoi(c[7]))
         i++;
-    if (ft_atoi(c[8]) == -1)
+    if (ft_atoi(c[8]) == atoi(c[8]))
         i++;
-    if (ft_atoi(c[9]) == 0) // 10
+    if (ft_atoi(c[9]) == atoi(c[9])) // 10
         i++;
     if (i == 10)
         (*s)++;
@@ -859,4 +859,4 @@ int main(void)
     HR();
     TESTAREA();
     return 0;
-} 
+}

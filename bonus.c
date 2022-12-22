@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ali <ali@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: msariasl <msariasl@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/26 04:36:58 by msariasl          #+#    #+#             */
-/*   Updated: 2022/11/27 22:46:21 by ali              ###   ########.fr       */
+/*   Updated: 2022/12/22 09:15:23 by msariasl         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int test_tlist(int *s) // LSTNEW
     int i = 0;
     t_list *head = NULL;
     head = (t_list *)malloc(sizeof(t_list));
-    if (!head) {
+    if (!head)
+    {
         printf("\nMALLOC ERROR!\n");
         i--;
     }
@@ -237,7 +238,6 @@ int test_lstmap(int *s) // LSTMAP (IN DEV.)
 
 void TESTAREA() // CASUAL AREA
 {
-    int i = 0;
 }
 
 void HR()
